@@ -1,0 +1,10 @@
+<litepal>
+    <dbname value="cool_weather" />
+    <version value="1" />
+    <list>
+        <mapping class="com.bogaara.coolweather.db.City" />
+        <mapping class="com.bogaara.coolweather.db.County" />
+        <mapping class="com.bogaara.coolweather.db.Province" />
+
+    </list>
+</litepal>

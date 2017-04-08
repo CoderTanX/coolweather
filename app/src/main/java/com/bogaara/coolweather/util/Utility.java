@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.bogaara.coolweather.db.City;
 import com.bogaara.coolweather.db.County;
 import com.bogaara.coolweather.db.Province;
+import com.bogaara.coolweather.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,4 +86,21 @@ public class Utility {
         }
         return false;
     }
+
+    /*解析Weather实体类*/
+    public static Weather handleWeatherResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent, Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+
 }
